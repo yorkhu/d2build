@@ -1,0 +1,34 @@
+{
+    "name": "digipolisgent/robo-drush",
+    "description": "Drush CommandStack for Robo Task Runner",
+    "type": "robo-tasks",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jelle Sebreghts",
+            "email": "sebreghts.jelle@gmail.com"
+        },
+        {
+            "name": "Peter Gasser",
+            "email": "dev@boedah.de"
+        }
+    ],
+    "scripts": {
+        "test": "robo --ansi test"
+    },
+    "autoload": {
+        "psr-4": {
+            "Boedah\\Robo\\Task\\Drush\\": "src"
+        }
+    },
+    "require": {
+        "consolidation/robo": "^1.0|^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4",
+        "drush/drush": "^8.0 | ^9.0 | ^10.0"
+    },
+    "suggest": {
+        "drush/drush": "robo-drush needs a global or local Drush to use."
+    }
+}

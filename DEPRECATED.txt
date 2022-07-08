@@ -1,0 +1,31 @@
+SyncServer config change in robo-config*.yml:
+
+OUTDATED:
+
+settings:
+...
+  SyncServer:
+    server: staging.server.io
+    user: deploy
+    port: 22
+    HomeDir: /var/www/docker/site-staging
+    WebDir: /var/www/docker/site-staging/web
+    adminUser: site_admin
+...
+
+
+NEW:
+
+settings:
+...
+  connections:
+    staging:
+      server: staging.server.io
+      user: deploy
+      port: 22
+      HomeDir: /var/www/docker/site-staging
+      WebDir: /var/www/docker/site-staging/web
+  SyncOptions:
+    staging:
+      adminUser: site_admin
+...

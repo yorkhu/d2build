@@ -1,0 +1,69 @@
+{
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name": "droath/robo-docker-compose",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/akiessling/robo-docker-compose.git",
+          "type": "git",
+          "reference": "master"
+        },
+        "autoload": {
+          "psr-4": {
+            "Droath\\RoboDockerCompose\\": "src"
+          }
+        }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "droath/robo-docker-sync",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/yorkhu/robo-docker-sync.git",
+          "type": "git",
+          "reference": "master"
+        },
+        "autoload": {
+          "psr-4": {
+            "Droath\\RoboDockerSync\\": "src"
+          }
+        }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "digipolisgent/robo-drush",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/digipolisgent/robo-drush.git",
+          "type": "git",
+          "reference": "master"
+        },
+        "autoload": {
+          "psr-4": {
+            "Boedah\\Robo\\Task\\Drush\\": "src"
+          }
+        }
+      }
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8",
+    "consolidation/robo": "^3",
+    "digipolisgent/robo-drush": "master",
+    "droath/robo-docker-compose": "master",
+    "droath/robo-docker-sync": "master"
+  },
+  "autoload": {
+    "psr-4": {
+      "d2build\\": "src/d2build/"
+    }
+  }
+}

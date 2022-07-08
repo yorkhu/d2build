@@ -1,0 +1,118 @@
+# @project-name: project name value
+# @branch: actual branch name value
+# @env: actual environment name
+settings:
+  # Drupal version
+  Drupal: 9
+  # Application dir:
+  AppDir: '/var/www'
+  # Web dir in application dir
+  WebDir: 'web'
+  ProductionBranch: 'master'
+  # 0: not docker based 1: docker based
+  EnableDocker: 0
+  # Create local settings file: 0: skip 1: yes
+  CreateLocalSettings: 0
+  # Composer command, default value: /usr/local/bin/composer
+  ComposerCmd: /usr/local/bin/composer
+  # Npm command, default value: npm
+  NpmCmd: npm
+  # Drush command, default value: drush
+  DrushCmd: drush
+  # Building theme: 0: skip; 1: yes (default)
+  ThemeBuild: 1
+  # npm task parameter
+  ThemeTask: sass-dev
+  # Drupal extra directory:
+  DrupalExtra: drupal_extra
+  DrupalExtra: drupal_extra/@env
+  # Devel SQL Server settings:
+  DevSqlServer:
+    database: drupal
+    username: drupal
+    password: drupal
+    host: db
+  docker:
+    # Drush run this container:
+    webContainer: phpfpm
+    themeContainer: node
+  connections:
+    source:
+      # Connection type (default: ssh):
+      ctype: ssh
+      # Server access
+      server: staging.server.io
+      user: deploy
+      port: 22
+      # Application dir:
+      AppDir: '/var/www'
+      # Remote home and document root
+      HomeDir: /var/www/docker/project-name-@env
+      WebDir: /var/www/docker/project-name-@env/web
+      # 0: not docker based 1: docker based, Default: settings.EnableDocker
+      EnableDocker: 0
+    staging:
+      server: staging.server.io
+      user: deploy
+      port: 22
+      # Application dir:
+      AppDir: '/var/www'
+      HomeDir: /var/www/docker/project-name-@env
+      WebDir: /var/www/docker/project-name-@env/web
+
+  # Set default sync source / default: staging
+  SyncDefaultSource: staging
+  # Not required, sync database(s) and files
+  SyncOptions:
+    sync_source:
+      # Drupal admin username, may be different depending on the project, default to "admin".
+      adminUser: admin
+      # 0: skip run drush sanitize, 1: run drush sanitize, Default: 1
+      sanitize: 1
+      # 0: do not change admin password, 1: set admin password: admin, Default: 1
+      resetPassword: 1
+
+      # Not required, set multi database sync config. Mulitsite config override this setting.
+      databases:
+        - drupal
+        - civicrm
+
+      # Files directory WebDir based relative path(s):
+      # Example: Single directory:
+      remoteFilesDir: sites/default/files
+      localFilesDir: sites/default/files
+
+      # Example: Multi directory:
+      remoteFilesDir:
+        - sites/default/files
+        - ../private_fs
+      localFilesDir:
+        - sites/default/files
+        - ../private_fs
+    staging:
+      adminUser: admin
+      remoteFilesDir: sites/default/files
+      localFilesDir: sites/default/files
+    # Default local source load only downloaded sql file.
+    local:
+      adminUser: admin
+
+  # Not required, list multisite directory (site/<directory name>)
+  # <directory name>: <db names>
+  MultiSite:
+    civicrm:
+      - default
+      - civicrm
+    main: default
+    second: default
+
+  # Deploy process
+  deploy:
+    # deploy destination
+    prod:
+      # deploy type: robo, robo+sync
+      deploy: robo+sync
+      # sync dirs (only: robo+sync)
+      sync_dirs:
+        - 'profiles/your_profile/themes/your_theme/css/dir/'
+
